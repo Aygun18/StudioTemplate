@@ -1,0 +1,74 @@
+﻿@using StudioTemplate.Models;
+@model List<Team>
+@{
+    int count = 0;
+}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+           <a asp-controller="team" asp-action="create" class="btn btn-success">Create Team</a>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                No
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Position
+                            </th>
+                            <th>
+                                Link
+                            </th>
+                            <th>
+                                Settings
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Team team in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>
+                                    @count
+                                </td>
+                                <td class="py-1">
+                                    <img src="~/assets/img/@team.Image" alt="image" />
+                                </td>
+                                <td>
+                                    @team.Name
+                                </td>
+                               
+                                <td>
+                                    @team.Position
+                                </td>
+                                <td>
+                                    @team.TwitterLink
+                                </td>
+                                <td>
+                                    @team.FacebookLink
+                                </td>
+                                <td>
+                                    @team.LinkedinLink
+                                </td>
+                                <td>
+                                    <a asp-conroller="team" asp-action="update" class="btn btn-warning" asp-route-id="@team.Id"><i class="mdi mdi-open-in-new"></i></a>
+                                    <a asp-conroller="team" asp-action="delete" class="btn btn-danger" asp-route-id="@team.Id"><i class="mdi mdi-delete-variant"></i></a>
+                                </td>
+                            </tr>
+
+                        }
+                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
